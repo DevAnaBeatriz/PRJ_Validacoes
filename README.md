@@ -3,6 +3,8 @@
 
 ###
 
-<img align="left" height="700" src="https://cdn.discordapp.com/attachments/914572071114264659/1149173871761707088/image.png"  />
+<div align="center">
+  <img height="" src="https://cdn.discordapp.com/attachments/914572071114264659/1149173871761707088/image.png"  />
+</div>
 
 ###

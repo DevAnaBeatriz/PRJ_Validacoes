@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro com JavaScript</title>
+    <script src="js/scripts.js"></script>  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-dark">
+    <div class="row">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">&nbsp;&nbsp;&nbsp;Cadastrar - Agendamento de Clientes</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="bg-dark row">
+  
+            <div class=" card-body">
+                         <form>
+                                            <div class="bg-white container text-left">
+                                                <br>
+                                                <div class="row row-cols-2">
+                                                    <div class="col">
+                                                        <h5 class="card-title">Dados Pessoais</h5>
+                                                        <br>
+                                                        <div class="mb-3">
+                                                            <label for="exampleFormControlInput1" class="form-label">Nome do Cliente:</label>
+                                                            <input type="text" class="form-control" required name="nome" id="nome" maxlength="50" placeholder="Digite seu nome" onkeypress="return blocknumero(window.event.keyCode)">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="exampleFormControlInput1" class="form-label">Celular:</label>
+                                                            <input type="text" name="celular" id="celular" class="form-control" required oninput="formatarTelefone(event)" onkeypress="return blockletras(window.event.keyCode)" placeholder="Digite seu número de celular" maxlength="15">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="exampleFormControlInput1" class="form-label">Telefone Fixo:</label>
+                                                            <input type="text" name="telefone" id="telefone" class="form-control" required oninput="formatarTelefoneFixo(event)" onkeypress="return blockletras(window.event.keyCode)" placeholder="Digite seu número de telefone" maxlength="14">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="rgInput" class="form-label">RG:</label>
+                                                            <input type="text" name="rg" id="rg" class="form-control" required placeholder="Digite seu RG" oninput="this.value = formatarRG(this.value)" maxlength="9">
+                                                          </div>
+                                                        <div class="mb-3">
+                                                            <label for="exampleFormControlInput1" class="form-label">CPF:</label>
+                                                            <input type="text" class="form-control" required name="cpf" id="cpf" maxlength="11" onblur="formatarCPF(this.value)" onkeypress="return blockletras(window.event.keyCode)" placeholder="Digite seu CPF">
+                                                        </div>
+                                                    </div>
+                                                    <div class="div_end"> 
+                                                        <h5 class="card-title">Dados Residenciais</h5>
+                                                        <br>
+                                                    <div class="col">
+                                                     
+                                                        <div class="mb-3">
+                                                            <label for="exampleFormControlInput1" class="form-label">CEP:</label>
+                                                            <input type="text" name="cep" id="cep" class="form-control" required maxlength="9" placeholder="Digite seu CEP" oninput="formatCEP(event)" onblur="preencherEndereco()" onkeypress="return blockletras(window.event.keyCode)">
+                                                        </div>
+                                                      
+                                                        <div class="mb-3">
+                                                                <div class="row align-items-end">
+                                                                    <div class="col">
+                                                                        <label for="exampleFormControlInput1" class="form-label">Endereço:</label>
+                                                                        <input type="text" name="endereco" id="endereco" disabled placeholder="Insira o CEP para o endereço" class="form-control" required onkeypress="return blocknumero(window.event.keyCode)" readonly>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <label for="exampleFormControlInput1" class="form-label">Número:</label>
+                                                                        <input type="text"  style="width: 180px;" maxlength="4" name="numeroend" id="numeroend" placeholder="Digite seu número" class="form-control" required  onkeypress="return blockletras(window.event.keyCode) ">
+                                                                    </div>
+                                                                </div>
+                                                          </div>
+                                                     
+                                                        <div class="mb-3">
+                                                            <label for="exampleFormControlInput1" class="form-label">Bairro:</label>
+                                                            <input type="text" name="bairro" id="bairro" class="form-control" disabled placeholder="Insira o CEP para o bairro" required onkeypress="return blocknumero(window.event.keyCode)">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="exampleFormControlInput1" class="form-label">Cidade:</label>
+                                                            <input type="text" name="cidade" id="cidade" class="form-control" disabled placeholder="Insira o CEP para a cidade" required onkeypress="return blocknumero(window.event.keyCode)">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="estado" class="form-label">Estado:</label>
+                                                            <select class="form-select" name="estado" id="estado" required disabled>
+                                                                <option value="">Insira o CEP para o estado</option>
+                                                                <option value="INV">Insira um CEP válido!</option>
+                                                                <option value="undefined">Insira um CEP válido!</option>
+                                                                <option value="AC">Acre</option>
+                                                                <option value="AL">Alagoas</option>
+                                                                <option value="AP">Amapá</option>
+                                                                <option value="AM">Amazonas</option>
+                                                                <option value="BA">Bahia</option>
+                                                                <option value="CE">Ceará</option>
+                                                                <option value="DF">Distrito Federal</option>
+                                                                <option value="ES">Espírito Santo</option>
+                                                                <option value="GO">Goiás</option>
+                                                                <option value="MA">Maranhão</option>
+                                                                <option value="MT">Mato Grosso</option>
+                                                                <option value="MS">Mato Grosso do Sul</option>
+                                                                <option value="MG">Minas Gerais</option>
+                                                                <option value="PA">Pará</option>
+                                                                <option value="PB">Paraíba</option>
+                                                                <option value="PR">Paraná</option>
+                                                                <option value="PE">Pernambuco</option>
+                                                                <option value="PI">Piauí</option>
+                                                                <option value="RJ">Rio de Janeiro</option>
+                                                                <option value="RN">Rio Grande do Norte</option>
+                                                                <option value="RS">Rio Grande do Sul</option>
+                                                                <option value="RO">Rondônia</option>
+                                                                <option value="RR">Roraima</option>
+                                                                <option value="SC">Santa Catarina</option>
+                                                                <option value="SP">São Paulo</option>
+                                                                <option value="SE">Sergipe</option>
+                                                                <option value="TO">Tocantins</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                
+                                            </div>
+                                            <button type="button" id="btnSubmit" class="btn btn-primary" onclick="validarFormulario()">Cadastrar</button>
+                                            <br> <br>
+                                        </div>  
+                                        
+                                            <br>
+                                        </form>
+                              
+                            </div>
+             
+    </div>
+</body>
+
+</html>

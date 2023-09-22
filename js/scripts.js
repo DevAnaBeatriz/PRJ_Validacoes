@@ -35,16 +35,40 @@ function blockletras(keypress)
   }
 }
 
+function blocksimbolo(keypress){
+
+  var regex = /[^0-9a-zA-Z]/g;
+
+  var key = String.fromCharCode(keypress);
+
+  if(regex.test(key)) {
+
+    return false;
+
+  } else {
+
+    return true;
+
+  }
+
+}
+
 function blocknumero(keypress)
 {
   // campo nome - bloqueia numero                               
-  if(keypress>=48 && keypress<=57)
-  {
+  var regex = /[^a-zA-Z]/g;
+
+  var key = String.fromCharCode(keypress);
+
+  if(regex.test(key)) {
+
     return false;
-  }
-  else{
+
+  } else {
+
     return true;
-  }
+
+  } 
 }
 
 function formatarCPF(cpf) {
@@ -122,54 +146,74 @@ function formatarCPF(cpf) {
 function validarFormulario() {
  // Remove todos os caracteres não numéricos
  var cpf = document.getElementById('cpf').value.replace(/\.|\-/g, "");
+ const errorMsg = document.getElementById('error');
  var rg = document.getElementById('rg').value.replace(/\.|\-/g, "");
+ const errorMsg2 = document.getElementById('errorrg');
  var nome = document.getElementById('nome').value;
+ const errorMsg3 = document.getElementById('errornm');
  var celular = document.getElementById('celular').value;
+ const errorMsg4 = document.getElementById('errorcel');
  var telefone = document.getElementById('telefone').value;
+ const errorMsg5 = document.getElementById('errortel');
  var numeroend = document.getElementById('numeroend').value;
+ const errorMsg6 = document.getElementById('errornum');
  var cep = document.getElementById('cep').value;
+ const errorMsg7 = document.getElementById('errorcep');
  var endereco = document.getElementById('endereco').value;
+ const errorMsg8 = document.getElementById('errorend');
  var bairro = document.getElementById('bairro').value;
+ const errorMsg9 = document.getElementById('errorbai');
  var cidade = document.getElementById('cidade').value;
+ const errorMsg10 = document.getElementById('errorcid');
  var estado = document.getElementById('estado').value;
+ const errorMsg11 = document.getElementById('errorest');
 
 var cad = 0;
 
 if (nome !== ""){
     if(nome.length <10){
       console.log("Nome inválido! Insira seu nome completo.")
-      alert("Nome inválido! Insira seu nome completo.")
+      errorMsg3.innerText = 'Nome inválido! Insira seu nome completo.';
+      //alert("Nome inválido! Insira seu nome completo.")
     }else{
     console.log("Nome válido!")
+    errorMsg3.innerText = '';
     cad +=1;
   }}
 else{
   console.log("Nome inválido! Preencha o campo nome.")
-  alert("Nome inválido! Preencha o campo nome.")
+  errorMsg3.innerText = 'Nome inválido! Preencha o campo nome.';
+  //alert("Nome inválido! Preencha o campo nome.")
 }
 
 if (celular !== ""){
   if(celular.length <15){
     console.log("Celular inválido! Insira seu celular completo.")
-    alert("Celular inválido! Insira seu celular completo.")
+    errorMsg4.innerText = 'Celular inválido! Insira seu celular completo.';
+    //alert("Celular inválido! Insira seu celular completo.")
   }else{
   console.log("Celular válido!")
+  errorMsg4.innerText = '';
   cad +=1;}
 }else{
-console.log("Celular inválido! Preencha o campo celular.")
-alert("Celular inválido! Preencha o campo celular.")
+console.log("Celular inválido! Preencha o campo celular.");
+errorMsg4.innerText = 'Celular inválido! Preencha o campo celular.';
+//alert("Celular inválido! Preencha o campo celular.")
 }
 
 if (telefone !== ""){
   if(telefone.length <14){
-    console.log("Telefone inválido! Insira seu telefone completo.")
-    alert("Telefone inválido! Insira seu telefone completo.")
+    console.log("Telefone inválido! Insira seu telefone completo.");
+    errorMsg5.innerText = 'Telefone inválido! Insira seu telefone completo.';
+   // alert("Telefone inválido! Insira seu telefone completo.")
   }else{
   console.log("Telefone válido!")
+  errorMsg5.innerText = '';
   cad +=1;}
 }else{
-console.log("Telefone inválido! Preencha o campo telefone.")
-alert("Telefone inválido! Preencha o campo telefone.")
+console.log("Telefone inválido! Preencha o campo telefone.");
+errorMsg5.innerText = 'Telefone inválido! Preencha o campo telefone.';
+//alert("Telefone inválido! Preencha o campo telefone.")
 }
 
 
@@ -177,17 +221,21 @@ alert("Telefone inválido! Preencha o campo telefone.")
   // Verificando se o RG possui 9 dígitos
   if (rg.length !== 9) {
     console.log("RG inválido! O RG precisa possuir 9 dígitos!")
-    alert("RG inválido! O RG precisa possuir 9 dígitos!");
+    errorMsg2.innerText = 'RG inválido! O RG precisa possuir 9 dígitos!';
+    //alert("RG inválido! O RG precisa possuir 9 dígitos!");
 
   }else{
     console.log("RG válido!")
+    errorMsg2.innerText = '';
     cad +=1;
   }
 
   // Verificando se o CPG possui 11 dígitos
   if (cpf.length !== 11) {
-    console.log("CPF inválido! O CPF precisa possuir 11 dígitos!")
-    alert("CPF inválido! O CPF precisa possuir 11 dígitos!");
+    console.log("CPF inválido! O CPF precisa possuir 11 dígitos!");
+    errorMsg.innerText = 'CPF inválido! O CPF precisa possuir 11 dígitos!';
+   // alert("CPF inválido! O CPF precisa possuir 11 dígitos!");
+
 
   }else{
 
@@ -202,7 +250,9 @@ alert("Telefone inválido! Preencha o campo telefone.")
       if (Resto != parseInt(cpf.substring(9, 10)) ) 
         {
           console.log("CPF inválido!");
-          alert("CPF inválido!");
+          errorMsg.innerText = 'CPF inválido!';
+          //alert("CPF inválido!");
+          
         }
       else{
 
@@ -214,83 +264,104 @@ alert("Telefone inválido! Preencha o campo telefone.")
 
       if (Resto != parseInt(cpf.substring(10, 11) ) ) 
       {console.log("CPF inválido!");
-      alert("CPF inválido!");}
+      errorMsg.innerText = 'CPF inválido!';
+     // alert("CPF inválido!");
+    }
       else{
     
     console.log("CPF válido!")
+    errorMsg.innerText = '';
     cad +=1;}
     }}
 
     if (cep !== ""){
       if(cep.length <9){
         console.log("CEP inválido! Insira seu CEP completo.")
-        alert("CEP inválido! Insira seu CEP completo.")
+        errorMsg7.innerText = 'CEP inválido! Insira seu CEP completo.';
+        //alert("CEP inválido! Insira seu CEP completo.")
       }else{
       console.log("CEP válido!")
+      errorMsg7.innerText = '';
       cad +=1;}
     }else{
     console.log("CEP inválido! Preencha o campo CEP.")
-    alert("CEP inválido! Preencha o campo CEP.")
+    errorMsg7.innerText = 'CEP inválido! Preencha o campo CEP.';
+   // alert("CEP inválido! Preencha o campo CEP.")
     }
 
     if (endereco !== "") {
       if (endereco == "Insira um CEP válido!" || endereco == "undefined") {
         console.log("Endereço inválido! Insira seu CEP corretamente.");
-        alert("Endereço inválido! Insira seu CEP corretamente.");
+        errorMsg8.innerText = 'Insira seu CEP corretamente.';
+      //  alert("Endereço inválido! Insira seu CEP corretamente.");
       } else {
         console.log("Endereço válido!");
+        errorMsg8.innerText = '';
         cad += 1;
       }
     } else {
       console.log("Endereço inválido! Preencha o campo endereço informando seu CEP.");
-      alert("Endereço inválido! Preencha o campo endereço informando seu CEP.");
+      errorMsg8.innerText = 'Preencha o campo endereço informando seu CEP.';
+     // alert("Endereço inválido! Preencha o campo endereço informando seu CEP.");
     }
     
     if (numeroend !== "") {
       console.log("Número válido!");
+      errorMsg6.innerText = '';
       cad += 1;
     } else {
       console.log("Número inválido! Preencha o campo número");
-      alert("Número inválido! Preencha o campo número");
+      errorMsg6.innerText = 'Preencha o campo número.';
+      //alert("Número inválido! Preencha o campo número");
     }
     
     if (bairro !== "") {
       if (bairro == "Insira um CEP válido!" || bairro == "undefined") {
         console.log("Bairro inválido! Insira seu CEP corretamente.");
-        alert("Bairro inválido! Insira seu CEP corretamente.");
+        errorMsg9.innerText = 'Bairro inválido! Insira seu CEP corretamente.';
+        //alert("Bairro inválido! Insira seu CEP corretamente.");
       } else {
         console.log("Bairro válido!");
+        errorMsg9.innerText = '';
         cad += 1;
       }
     } else {
       console.log("Bairro inválido! Preencha o campo bairro informando seu CEP.");
-      alert("Bairro inválido! Preencha o campo bairro informando seu CEP.");
+      errorMsg9.innerText = 'Bairro inválido! Preencha o campo bairro informando seu CEP.';
+     // alert("Bairro inválido! Preencha o campo bairro informando seu CEP.");
+
     }
     
     if (cidade !== "") {
       if (cidade == "Insira um CEP válido!" || cidade == "undefined") {
         console.log("Cidade inválido! Insira seu CEP corretamente.");
-        alert("Cidade inválido! Insira seu CEP corretamente.");
+        errorMsg10.innerText = 'Cidade inválido! Insira seu CEP corretamente.';
+       // alert("Cidade inválido! Insira seu CEP corretamente.");
       } else {
         console.log("Cidade válido!");
+        errorMsg10.innerText = '';
         cad += 1;
       }
     } else {
       console.log("Cidade inválido! Preencha o campo cidade informando seu CEP.");
-      alert("Cidade inválido! Preencha o campo cidade informando seu CEP.");
+      errorMsg10.innerText = 'Cidade inválido! Preencha o campo cidade informando seu CEP.';
+     // alert("Cidade inválido! Preencha o campo cidade informando seu CEP.");
     }
     
     if (estado !== "") {
       if (estado == "INV" || estado == "undefined") {
         console.log("Estado inválido! Insira seu CEP corretamente.");
-        alert("Estado inválido! Insira seu CEP corretamente.");
+        errorMsg11.innerText = 'Estado inválido! Insira seu CEP corretamente.';
+       // alert("Estado inválido! Insira seu CEP corretamente.");
       } else {
         console.log("Estado válido!");
+        errorMsg11.innerText = '';
         cad += 1;
       }
     } else {
       console.log("Estado inválido! Preencha o campo estado informando seu CEP.");
-      alert("Estado inválido! Preencha o campo estado informando seu CEP.");
+      errorMsg11.innerText = 'Estado inválido! Preencha o campo estado informando seu CEP.';
+      //alert("Estado inválido! Preencha o campo estado informando seu CEP.");
     }
     
     if (cad == 11) {

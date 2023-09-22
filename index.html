@@ -36,23 +36,28 @@
                                                         <br>
                                                         <div class="mb-3">
                                                             <label for="exampleFormControlInput1" class="form-label">Nome do Cliente:</label>
-                                                            <input type="text" class="form-control" required name="nome" id="nome" maxlength="50" placeholder="Digite seu nome" onkeypress="return blocknumero(window.event.keyCode)">
+                                                            <input type="text" class="form-control" required name="nome" id="nome" maxlength="60" placeholder="Digite seu nome" onkeypress="return blocknumero(window.event.keyCode)">
+                                                            <p id="errornm" class="p-3 text-danger-emphasis "></p>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="exampleFormControlInput1" class="form-label">Celular:</label>
                                                             <input type="text" name="celular" id="celular" class="form-control" required oninput="formatarTelefone(event)" onkeypress="return blockletras(window.event.keyCode)" placeholder="Digite seu número de celular" maxlength="15">
+                                                            <p id="errorcel" class="p-3 text-danger-emphasis "></p>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="exampleFormControlInput1" class="form-label">Telefone Fixo:</label>
                                                             <input type="text" name="telefone" id="telefone" class="form-control" required oninput="formatarTelefoneFixo(event)" onkeypress="return blockletras(window.event.keyCode)" placeholder="Digite seu número de telefone" maxlength="14">
+                                                            <p id="errortel" class="p-3 text-danger-emphasis "></p>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="rgInput" class="form-label">RG:</label>
-                                                            <input type="text" name="rg" id="rg" class="form-control" required placeholder="Digite seu RG" oninput="this.value = formatarRG(this.value)" maxlength="9">
-                                                          </div>
+                                                            <input type="text" name="rg" id="rg" class="form-control" required placeholder="Digite seu RG" oninput="this.value = formatarRG(this.value)" maxlength="9" onkeypress="return blocksimbolo(window.event.keyCode)">
+                                                            <p id="errorrg" class="p-3 text-danger-emphasis "></p>  
+                                                        </div>
                                                         <div class="mb-3">
                                                             <label for="exampleFormControlInput1" class="form-label">CPF:</label>
-                                                            <input type="text" class="form-control" required name="cpf" id="cpf" maxlength="11" onblur="formatarCPF(this.value)" onkeypress="return blockletras(window.event.keyCode)" placeholder="Digite seu CPF">
+                                                            <input type="text" class="form-control" required name="cpf" id="cpf" maxlength="14" onblur="formatarCPF(this.value)" onkeypress="return blockletras(window.event.keyCode)" placeholder="Digite seu CPF">                                                   
+                                                            <p id="error" class="p-3 text-danger-emphasis "></p>
                                                         </div>
                                                     </div>
                                                     <div class="div_end"> 
@@ -63,6 +68,7 @@
                                                         <div class="mb-3">
                                                             <label for="exampleFormControlInput1" class="form-label">CEP:</label>
                                                             <input type="text" name="cep" id="cep" class="form-control" required maxlength="9" placeholder="Digite seu CEP" oninput="formatCEP(event)" onblur="preencherEndereco()" onkeypress="return blockletras(window.event.keyCode)">
+                                                            <p id="errorcep" class="p-3 text-danger-emphasis "></p>
                                                         </div>
                                                       
                                                         <div class="mb-3">
@@ -70,10 +76,12 @@
                                                                     <div class="col">
                                                                         <label for="exampleFormControlInput1" class="form-label">Endereço:</label>
                                                                         <input type="text" name="endereco" id="endereco" disabled placeholder="Insira o CEP para o endereço" class="form-control" required onkeypress="return blocknumero(window.event.keyCode)" readonly>
+                                                                        <p id="errorend" class="p-3 text-danger-emphasis "></p>
                                                                     </div>
                                                                     <div class="col">
                                                                         <label for="exampleFormControlInput1" class="form-label">Número:</label>
                                                                         <input type="text"  style="width: 180px;" maxlength="4" name="numeroend" id="numeroend" placeholder="Digite seu número" class="form-control" required  onkeypress="return blockletras(window.event.keyCode) ">
+                                                                        <p id="errornum" class="p-3 text-danger-emphasis "></p>
                                                                     </div>
                                                                 </div>
                                                           </div>
@@ -81,10 +89,12 @@
                                                         <div class="mb-3">
                                                             <label for="exampleFormControlInput1" class="form-label">Bairro:</label>
                                                             <input type="text" name="bairro" id="bairro" class="form-control" disabled placeholder="Insira o CEP para o bairro" required onkeypress="return blocknumero(window.event.keyCode)">
+                                                            <p id="errorbai" class="p-3 text-danger-emphasis "></p>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="exampleFormControlInput1" class="form-label">Cidade:</label>
                                                             <input type="text" name="cidade" id="cidade" class="form-control" disabled placeholder="Insira o CEP para a cidade" required onkeypress="return blocknumero(window.event.keyCode)">
+                                                            <p id="errorcid" class="p-3 text-danger-emphasis "></p>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="estado" class="form-label">Estado:</label>
@@ -120,6 +130,7 @@
                                                                 <option value="SE">Sergipe</option>
                                                                 <option value="TO">Tocantins</option>
                                                             </select>
+                                                            <p id="errorest" class="p-3 text-danger-emphasis "></p>
                                                         </div>
                                                     </div>
                                                 </div>
